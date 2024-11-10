@@ -1,24 +1,20 @@
-import Image from "next/image"
-import pro from "../image/pro.jpg"
-
-
-export default function Home() {
-  return (
-    <div>
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = Home;
+const image_1 = __importDefault(require("next/image"));
+const pro_jpg_1 = __importDefault(require("../image/pro.jpg"));
+function Home() {
+    return (<div>
     <section className="text-gray-400 bg-pink-200 body-font">
         <div className="container mx-auto flex flex-col md:flex-row items-center px-5 py-24">
 
           {/* Image Section */}
           <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0 mx-auto">
             <div className="w-80 h-80 md:w-96 md:h-96 overflow-hidden rounded-full mx-auto">
-              <Image
-                className="object-cover"
-                alt="hero"
-                src={pro}
-                width={384}
-                height={384}
-                layout="intrinsic"
-              />
+              <image_1.default className="object-cover" alt="hero" src={pro_jpg_1.default} width={384} height={384} layout="intrinsic"/>
             </div>
           </div>
 
@@ -43,4 +39,5 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </div>)}
+    </div>);
+}
