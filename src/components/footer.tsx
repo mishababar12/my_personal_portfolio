@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <div>
     
-    <footer className="text-gray-600 body-font bg-rose-300">
+    <footer className="text-gray-600 body-font bg-rose-100">
       <div className="container px-1 py-1 mx-auto flex items-center sm:flex-row flex-col">
         {/* Logo or Brand Name */}
         <a className="flex title-font font-medium items-center md:justify-start justify-center text-purple-800">

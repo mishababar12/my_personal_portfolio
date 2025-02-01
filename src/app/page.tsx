@@ -1,11 +1,11 @@
 import Image from "next/image"
-import pro from "../image/pro.jpg"
+import ish from "../image/ish.jpg"
 
 
 export default function Home() {
   return (
     <div>
-    <section className="text-gray-400 bg-pink-200 body-font">
+    <section className="text-white bg-gradient-to-r from-purple-300 via-pink-400 to-purple-800 body-font">
         <div className="container mx-auto flex flex-col md:flex-row items-center px-5 py-24">
 
           {/* Image Section */}
@@ -14,7 +14,7 @@ export default function Home() {
               <Image
                 className="object-cover"
                 alt="hero"
-                src={pro}
+                src={ish}
                 width={384}
                 height={384}
                 layout="intrinsic"
@@ -24,12 +24,12 @@ export default function Home() {
 
           {/* About Me Section */}
           <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start items-center text-center md:text-left">
-            <h1 className="title-font sm:text-4xl text-3xl mb-4 font-bold text-purple-950">
+            <h1 className="title-font sm:text-4xl text-3xl mb-4 font-bold text-white">
               Hi, I'm Misha Babar
               <br />
               Web Developer
             </h1>
-            <p className="mb-8 leading-relaxed font-bold text-purple-800 text-sm sm:text-base md:text-lg lg:text-xl">
+            <p className="mb-8 leading-relaxed font-normal text-white text-sm sm:text-base md:text-md lg:text-lg">
               I’m a passionate and dedicated web developer with a strong focus on creating dynamic,
               user-friendly, and responsive websites and web applications. I specialize in front-end
               development, crafting seamless user experiences using modern technologies like HTML5,
