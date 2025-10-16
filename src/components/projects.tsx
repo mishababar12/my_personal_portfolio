@@ -4,12 +4,12 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-import todo from "../../../public/image/todo.jpg";
-import form from "../../../public/image/form.jpg";
-import Screenshot1 from "../../../public/image/Screenshot1.png";
-import bestt from "../../../public/image/bestt.jpeg";
-import ter from "../../../public/image/ter.jpeg";
-import jlow from "../../../public/image/jlow.jpeg";
+import todo from "../../public/image/todo.jpg";
+import form from "../../public/image/form.jpg";
+import Screenshot1 from "../../public/image/Screenshot1.png";
+import bestt from "../../public/image/bestt.jpeg";
+import ter from "../../public/image/ter.jpeg";
+import jlow from "../../public/image/jlow.jpeg";
 
 const projects = [
   {

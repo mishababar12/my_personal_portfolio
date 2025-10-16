@@ -1,77 +1,80 @@
-import React from 'react'
-import { FaFacebook, FaGithub, FaWhatsapp, FaLinkedin } from 'react-icons/fa';
+"use client";
 
+import React from "react";
+import {
+  FaFacebook,
+  FaGithub,
+  FaWhatsapp,
+  FaLinkedin,
+} from "react-icons/fa";
+import { motion } from "framer-motion";
 
 export default function Footer() {
-  
-    
   return (
-    <div>
-    
-    <footer className="text-gray-600 body-font bg-rose-100">
-      <div className="container px-1 py-1 mx-auto flex items-center sm:flex-row flex-col">
-        {/* Logo or Brand Name */}
-        <a className="flex title-font font-medium items-center md:justify-start justify-center text-purple-800">
-          <span className="ml-3 text-xl font-bold">Portfolio</span>
-        </a>
+    <footer className="bg-gradient-to-br from-[#0f172a] to-[#1e293b] text-white w-full mt-auto">
+      <div className="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
 
-        {/* Copyright and Email */}
-        <p className="text-sm font-bold text-purple-700 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
-          © 2024{" "}
+        {/* Brand/Logo */}
+        <div className="text-xl font-bold text-teal-400">Misha's Portfolio</div>
+
+        {/* Email & Copyright */}
+        <p className="text-sm text-gray-300 text-center md:text-left">
+          &copy; 2024 —
           <a
             href="mailto:mishababar360@gmail.com"
-            className="text-purple-800 hover:text-rose-900"
+            className="ml-1 text-teal-300 hover:underline hover:text-teal-500"
           >
             mishababar360@gmail.com
           </a>
         </p>
 
-        {/* Social Media Icons */}
-        <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 font-bold justify-center sm:justify-start">
-          {/* Facebook Icon */}
-          <a
+        {/* Social Icons with Animations */}
+        <div className="flex space-x-4 text-2xl">
+          <motion.a
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.95 }}
             href="https://www.facebook.com/misha.siddique.509"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-purple-800 hover:text-rose-900 mx-2 text-2xl"
+            className="text-white hover:text-blue-500"
           >
             <FaFacebook />
-          </a>
+          </motion.a>
 
-          {/* GitHub Icon */}
-          <a
+          <motion.a
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.95 }}
             href="https://github.com/mishababar12"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-purple-800 hover:text-rose-900 mx-2 text-2xl"
+            className="text-white hover:text-gray-300"
           >
             <FaGithub />
-          </a>
+          </motion.a>
 
-          {/* WhatsApp Icon */}
-          <a
+          <motion.a
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.95 }}
             href="https://web.whatsapp.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-purple-800 hover:text-rose-900 mx-2 text-2xl"
+            className="text-white hover:text-green-500"
           >
             <FaWhatsapp />
-          </a>
+          </motion.a>
 
-          {/* LinkedIn Icon */}
-          <a
+          <motion.a
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.95 }}
             href="https://www.linkedin.com/in/misha-babar-9354552b6/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-purple-800 hover:text-rose-900 mx-2 text-2xl"
+            className="text-white hover:text-blue-400"
           >
             <FaLinkedin />
-          </a>
-        </span>
+          </motion.a>
+        </div>
       </div>
     </footer>
-    </div>
   );
-};
-
-
+}

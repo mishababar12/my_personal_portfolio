@@ -2,20 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* globals.css */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0f172a; /* match your blog background */
+  --foreground: #ffffff;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
+body, html {
+  margin: 0;
+  padding: 0;
+  background-color: var(--background); /* ✅ Ensures no white background */
   color: var(--foreground);
-  background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }

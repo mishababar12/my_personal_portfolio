@@ -1,72 +1,69 @@
-import React from 'react';
+"use client";
+
+import React from "react";
+import { motion } from "framer-motion";
 
 export default function Skills() {
-  return (
-    <div>
-      <section className="text-gray-600 bg-gradient-to-r from-purple-300 via-pink-400 to-purple-800 body-font py-24">
-        <div className="container mx-auto flex flex-col justify-center items-center">
-          <div className="text-center mb-20">
-            <h1 className="sm:text-3xl text-2xl font-bold title-font text-white mb-4">
-              My Technical Skills
-            </h1>
-            <p className="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto text-white font-normal">
-              "I have strong proficiency in web development technologies such as HTML, CSS, JavaScript, and React. I am also skilled in backend technologies like Node.js."
-            </p>
-          </div>
+const skills = [
+{ name: "React", level: "85%", width: "85%", color: "bg-cyan-500" },
+{ name: "JavaScript", level: "75%", width: "75%", color: "bg-yellow-400" },
+{ name: "TypeScript", level: "70%", width: "70%", color: "bg-blue-400" },
+{ name: "HTML", level: "90%", width: "90%", color: "bg-orange-500" },
+{ name: "CSS / Tailwind CSS", level: "85%", width: "85%", color: "bg-green-500" },
+{ name: "Python", level: "80%", width: "80%", color: "bg-indigo-500" },
+{ name: "Agent SDK (AI Agents)", level: "70%", width: "70%", color: "bg-teal-400" },
+{ name: "Streamlit", level: "80%", width: "80%", color: "bg-purple-500" },
+];
+  
+return (
+  <section className="min-h-screen bg-[#0f172a] text-white px-6 py-20 flex flex-col justify-center">
+    <div className="max-w-5xl mx-auto text-center">
+      {/* Section Title */}
+      <motion.h2
+        className="text-4xl sm:text-5xl font-bold mb-6"
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        My <span className="text-teal-400">Technical Skills</span>
+      </motion.h2>
 
-          <div className="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2 justify-center">
-            {/* Skill 1: React */}
-            <div className="p-4 sm:w-1/2 w-full transition-transform transform hover:scale-105 hover:shadow-xl duration-300 relative flex flex-col items-center">
-              <div className="bg-gray-100 rounded flex p-6 w-full justify-center items-center transition-all duration-300 hover:bg-cyan-200 z-10">
-                <i className="bx bxl-react text-4xl" style={{ color: 'rgb(11, 165, 165)' }}></i>
-                <span className="text-purple-950 font-bold text-xl ml-4">React</span>
-              </div>
-              <div className="w-full bg-gray-300 h-2 rounded-full mt-4 z-0">
-                <div className="progress-line react w-4/5 h-2 bg-cyan-500 rounded-full transition-all duration-300"></div>
-              </div>
+      <p className="text-gray-300 max-w-2xl mx-auto mb-12 text-base font-light">
+        I specialize in front-end and AI-driven development using modern technologies.
+        Here are my top technical skills and proficiency levels.
+      </p>
+
+      {/* Skills Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {skills.map((skill, index) => (
+          <motion.div
+            key={index}
+            className="bg-[#1e293b] p-6 rounded-xl shadow-md hover:shadow-teal-500/40 hover:scale-105 transition-all duration-300"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1 }}
+          >
+            <div className="flex justify-between items-center mb-3">
+              <h3 className="text-xl font-semibold text-teal-300">
+                {skill.name}
+              </h3>
+              <span className="text-sm text-gray-400">{skill.level}</span>
             </div>
 
-            {/* Skill 2: JavaScript */}
-            <div className="p-4 sm:w-1/2 w-full transition-transform transform hover:scale-105 hover:shadow-xl duration-300 relative flex flex-col items-center">
-              <div className="bg-gray-100 rounded flex p-6 w-full justify-center items-center transition-all duration-300 hover:bg-yellow-200 z-10">
-                <i className="bx bxl-javascript text-4xl" style={{ color: 'rgb(223, 238, 87)' }}></i>
-                <span className="text-purple-950 font-bold text-xl ml-4">JavaScript</span>
-              </div>
-              <div className="w-full bg-gray-300 h-2 rounded-full mt-4 z-0">
-                <div className="progress-line javascript w-3/5 h-2 bg-yellow-300 rounded-full transition-all duration-300"></div>
-              </div>
+            <div className="w-full bg-gray-700 h-2 rounded-full overflow-hidden">
+              <motion.div
+                className={`${skill.color} h-2 rounded-full`}
+                initial={{ width: "0%" }}
+                whileInView={{ width: skill.width }}
+                transition={{ duration: 1, ease: "easeOut" }}
+              />
             </div>
-
-            {/* Skill 3: CSS */}
-            <div className="p-4 sm:w-1/2 w-full transition-transform transform hover:scale-105 hover:shadow-xl duration-300 relative flex flex-col items-center">
-              <div className="bg-gray-100 rounded flex p-6 w-full justify-center items-center transition-all duration-300 hover:bg-green-200 z-10">
-                <i className="bx bxl-css3 text-4xl" style={{ color: 'rgb(80, 192, 5)' }}></i>
-                <span className="text-purple-950 font-bold text-xl ml-4">CSS</span>
-              </div>
-              <div className="w-full bg-gray-300 h-2 rounded-full mt-4 z-0">
-                <div className="progress-line css w-3/4 h-2 bg-green-500 rounded-full transition-all duration-300"></div>
-              </div>
-            </div>
-
-            {/* Skill 4: HTML */}
-            <div className="p-4 sm:w-1/2 w-full transition-transform transform hover:scale-105 hover:shadow-xl duration-300 relative flex flex-col items-center">
-              <div className="bg-gray-100 rounded flex p-6 w-full justify-center items-center transition-all duration-300 hover:bg-orange-400 z-10">
-                <i className="bx bxl-html5 text-4xl" style={{ color: 'rgb(189, 124, 4)' }}></i>
-                <span className="text-purple-950 font-bold text-xl ml-4">HTML</span>
-              </div>
-              <div className="w-full bg-gray-300 h-2 rounded-full mt-4 z-0">
-                <div className="progress-line html w-4/5 h-2 bg-orange-500 rounded-full transition-all duration-300"></div>
-              </div>
-            </div>
-          </div>
-
-          {/* Learn More Button */}
-          <button className="flex mx-auto font-bold mt-16 text-white bg-violet-800 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 hover:scale-105 rounded text-lg transition-all duration-300 ease-in-out">
-            Learn More
-          </button>
-        </div>
-      </section>
+          </motion.div>
+        ))}
+      </div>
     </div>
-  );
-}
+  </section>
+);
 
+}

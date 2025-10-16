@@ -1,68 +1,108 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 
 export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+
+  useEffect(() => {
+    setMenuOpen(false); // close menu on route change
+  }, [pathname]);
+
+  const navLinks = [
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
+    { href: "/projects", label: "Projects" },
+    { href: "/skills", label: "Skills" },
+    { href: "/blog", label: "Blog" },
+    { href: "/contact", label: "Contact" },
+  ];
+
   return (
-    <div>
-    <div>
-<header className="flex items-center justify-between p-4 bg-rose-100">
-
-<a href="#" className="text-2xl font-bold text-purple-950">Portfolio</a>
-
-
-<nav className="hidden md:flex font-bold space-x-6">
-  <a href="/" className="text-purple-950 hover:text-indigo-400">Home</a>
-  <a href="/about" className="text-purple-950 hover:text-indigo-400">About Me</a>
-  <a href="/projects" className="text-purple-950 hover:text-indigo-400">Projects</a>
-  <a href="/skills" className="text-purple-950 hover:text-indigo-400">Skills</a>
-  <a href="/contact" className="text-purple-950 hover:text-indigo-400">Contact</a>
-</nav>
-
-
-<button className="hidden md:inline-flex font-bold items-center bg-red-600 border-0 py-2 px-6 focus:outline-none hover:bg-purple-600 rounded text-white mt-4 md:mt-0">
-  Hire Me
-  <svg
-    fill="none"
-    stroke="currentColor"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    strokeWidth={2}
-    className="w-4 h-4 ml-1"
-    viewBox="0 0 24 24"
-  >
-   
-  </svg>
-</button>
-
-
-<div className="md:hidden flex items-center">
-  <button className="text-purple-950 hover:text-indigo-400" aria-label="Open Menu">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-      className="w-6 h-6"
-      viewBox="0 0 24 24"
+    <motion.header
+      className="bg-gradient-to-r from-[#0f172a] to-[#1e293b] text-white shadow-lg sticky top-0 z-50"
+      initial={{ y: -70, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5 }}
     >
-      <path d="M3 6h18M3 12h18M3 18h18" />
-    </svg>
-  </button>
-</div>
-</header>
+      <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+        {/* Logo */}
+        <Link href="/" className="text-2xl font-extrabold text-teal-400 tracking-wide">
+          Misha.dev
+        </Link>
 
-<div className="md:hidden flex flex-col space-y-4 bg-rose-100 p-4">
-<a href="/" className="text-purple-950 hover:text-indigo-400">Home</a>
-<a href="/about" className="text-purple-950 hover:text-indigo-400">About Me</a>
-<a href="/projects" className="text-purple-950 hover:text-indigo-400">Projects</a>
-<a href="/skills" className="text-purple-950 hover:text-indigo-400">Skills</a>
-<a href="/contact" className="text-purple-950 hover:text-indigo-400">Contact</a>
-<button className="font-bold text-white bg-red-600 border-0 py-2 px-6 focus:outline-none hover:bg-purple-600 rounded text-lg">
-  Hire Me
-</button>
-</div>
-</div>
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex space-x-6 text-sm font-semibold">
+          {navLinks.map(({ href, label }) => (
+            <Link
+              key={href}
+              href={href}
+              className={`transition hover:text-teal-300 ${
+                pathname === href ? "text-teal-400 underline" : ""
+              }`}
+            >
+              {label}
+            </Link>
+          ))}
+        </nav>
 
-</div>
-)
+        {/* Hire Me Button */}
+        <Link
+          href="/contact"
+          className="hidden md:inline-block bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2 px-6 rounded-xl transition duration-300"
+        >
+          Hire Me
+        </Link>
+
+        {/* Hamburger */}
+        <div className="md:hidden">
+          <button className="text-white" onClick={toggleMenu} aria-label="Toggle Menu">
+            {menuOpen ? (
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <motion.div
+          className="md:hidden bg-[#1e293b] px-6 py-4 space-y-4 text-sm font-medium"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          {navLinks.map(({ href, label }) => (
+            <Link
+              key={href}
+              href={href}
+              className={`block text-white hover:text-teal-300 transition ${
+                pathname === href ? "text-teal-400 underline" : ""
+              }`}
+            >
+              {label}
+            </Link>
+          ))}
+          <Link
+            href="/contact"
+            className="block text-center text-white bg-teal-500 hover:bg-teal-600 py-2 px-4 rounded-xl mt-2"
+          >
+            Hire Me
+          </Link>
+        </motion.div>
+      )}
+    </motion.header>
+  );
 }
