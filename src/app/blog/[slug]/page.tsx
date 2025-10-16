@@ -50,7 +50,8 @@ Result: a working AI that responds, plans, and switches between agents.
 
 export default async function BlogDetail({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const post = blogPosts[slug];
+  const post = blogPosts[slug as keyof typeof blogPosts];
+
 
   if (!post) return notFound();
 
