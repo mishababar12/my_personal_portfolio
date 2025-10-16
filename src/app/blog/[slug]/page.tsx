@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import agenticai from "../../../../public/image/agenticai.png";
-import sdkimage from "../../../../public/image/sdkimage.webp";
-import planningagent from "../../../../public/image/plannigagent.webp";
+import agenticai from "@/public/image/agenticai.png";
+import sdkimage from "@/public/image/sdkimage.webp";
+import planningagent from "@/public/image/plannigagent.webp";
 
 type BlogPost = { title: string; content: string; image?: any };
 const blogPosts: Record<string, BlogPost> = {
