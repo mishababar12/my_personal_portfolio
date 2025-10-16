@@ -1,91 +1,79 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
-
-type BlogPost = { title: string; content: string; image?: any };
-const blogPosts: Record<string, BlogPost> = {
+const blogPosts = {
   "understanding-agentic-ai": {
     title: "Understanding Agentic AI",
     content: `
-Agentic AI is about giving AI the ability to act with purpose, using tools and memory.
-It can plan, decide, and use tools like an agent. It works with LLMs and APIs to take real action.
+Agentic AI gives systems the ability to act purposefully, plan, and use tools.
+It connects LLMs, APIs, and decision logic to perform real actions.
 
 Key Concepts:
-- **Autonomy**: Agentic systems can make decisions based on goals.
-- **Tools & APIs**: Used by agents to perform real-world tasks.
-- **Context & Memory**: Helps AI stay aware across interactions.
+- Autonomy: Systems can make their own choices.
+- Tools & APIs: Used by agents to complete real-world tasks.
+- Context & Memory: Keep track of goals and history.
 
-Example: OpenAI Agents SDK lets you build these types of intelligent agents with tools, context, handoff, etc.
-
-Real-world applications include:
-- Personalized AI assistants
-- Automated customer support agents
-- Health & fitness digital coaches
+Example: OpenAI Agents SDK lets you build such intelligent, goal-oriented agents.
     `,
     image: "/image/agenticai.png",
   },
   "building-tools-openai-sdk": {
     title: "Building Tools with OpenAI SDK",
     content: `
-This blog explains how to build tools using OpenAI's SDK. You'll learn how to:
+Learn how to create tools using OpenAI's SDK:
 
-- **Define tools using @tool**: Create functions that the LLM can call.
-- **Use RunContextWrapper**: Pass shared memory or variables between steps.
-- **Handle tool responses**: Return string/text or full response objects.
-- **Perform handoffs**: Use @agent to switch to another agent when needed.
+- Define tools with @tool
+- Use RunContextWrapper to pass shared data
+- Handle tool responses properly
+- Perform handoffs between agents
 
-These patterns allow you to simulate complex workflows, even without an actual API key.
-Example use case: A fitness agent that calls a meal planner tool, then hands off to a workout agent.
+These steps help you simulate workflows for intelligent applications.
     `,
     image: "/image/sdkimage.webp",
   },
   "how-i-built-my-first-agent": {
     title: "How I Built My First Agent",
     content: `
-I built my first agent using the OpenAI SDK. It could respond, call tools, and switch to another agent.
+I created my first custom agent using the OpenAI SDK.
 
-Steps I followed:
-1. Created custom tool functions like fetch_user_info.
-2. Used @tool and @agent decorators.
-3. Implemented context with RunContextWrapper.
-4. Simulated tool behavior without an actual backend.
+Steps:
+1. Made custom tool functions
+2. Used @tool and @agent
+3. Implemented context
+4. Simulated tool calls
 
-What I learned:
-- Agents are modular.
-- Tools must be async-friendly.
-- Context is essential for carrying info across steps.
-
-This approach is perfect for health, productivity, or education bots.
+Result: a working AI that responds, plans, and switches between agents.
     `,
     image: "/image/plannigagent.webp",
   },
 };
 
-export default async function BlogDetail({ params }: { params: { slug: string } }) {
-  const post = blogPosts[params.slug];
+export default async function BlogDetail({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = blogPosts[slug];
 
   if (!post) return notFound();
 
   return (
-       <div
+    <div
       className="min-h-screen w-full py-20 px-4 text-white bg-cover bg-center"
-      style={{ backgroundImage: `url('/agenticbg.jpg')` }}
+      style={{ backgroundImage: "url('/agenticbg.jpg')" }}
     >
-      <div className=" bg-opacity-80 w-full max-w-5xl mx-auto p-10 rounded-2xl shadow-xl">
+      <div className="bg-[#0f172abf] w-full max-w-5xl mx-auto p-10 rounded-2xl shadow-xl">
         <h1 className="text-5xl font-extrabold text-teal-400 mb-8 text-center">
           {post.title}
         </h1>
-        {post.image && (
-          <div className="flex justify-center">
-            <Image
-              src={post.image}
-              alt={post.title}
-              width={900}
-              height={450}
-              className="rounded-xl mb-8 shadow-lg"
-            />
-          </div>
-        )}
+
+        <div className="flex justify-center">
+          <Image
+            src={post.image}
+            alt={post.title}
+            width={900}
+            height={450}
+            className="rounded-xl mb-8 shadow-lg"
+          />
+        </div>
+
         <p className="text-gray-300 whitespace-pre-line leading-relaxed text-lg tracking-wide">
           {post.content}
         </p>
@@ -93,3 +81,4 @@ export default async function BlogDetail({ params }: { params: { slug: string } 
     </div>
   );
 }
+
