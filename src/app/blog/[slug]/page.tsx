@@ -61,7 +61,7 @@ This approach is perfect for health, productivity, or education bots.
   },
 };
 
-export default function BlogDetail({ params }: { params: { slug: string } }) {
+export default async function BlogDetail({ params }: { params: { slug: string } }) {
   const post = blogPosts[params.slug];
 
   if (!post) return notFound();
